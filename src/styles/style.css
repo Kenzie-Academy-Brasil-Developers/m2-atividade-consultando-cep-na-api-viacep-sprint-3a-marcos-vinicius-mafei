@@ -51,10 +51,13 @@ input {
   background-color: #e0e0e0;
 }
 
-span {
+div#result{
   color: rgb(63, 63, 63);
-  height: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   font-weight: bold;
-  text-align: justify;
+  text-align: start;
   text-transform: uppercase;
+  line-height: 20px;
 }
