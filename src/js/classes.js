@@ -7,21 +7,17 @@ class busca{
         span.innerHTML = ''
         e.preventDefault();
         const input = document.querySelector('#cep-input')
-        const resposta = await fetch(`https://viacep.com.br/ws/${input.value}/json/unicode/`)
-        .then(res => {res.json()
-            console.log(resposta.status)
-        })
+        await fetch(`https://viacep.com.br/ws/${input.value}/json/unicode/`)
+        .then(res => res.json())
         .then(res=>{
             if(res.cep !== undefined){
-                span.innerText = `Resultados: ${res.logradouro}, ${res.bairro}, ${res.localidade} - ${res.uf}, DDD: ${res.ddd}.`
+                span.innerText = `Resultados: Rua: ${res.logradouro}, Bairro: ${res.bairro}, ${res.localidade} - ${res.uf}, DDD: ${res.ddd}.`
             }else{
                 span.innerText = `Resultados: Cep não reconhecido...`
             }
         })
         .catch((e)=>{
-            if(e){
-                console.log('bunda')
-            }
+            span.innerText = `Resultados: Verifique o Cep selecionado. Lembre-se de que o cep completo possui 8 dígitos.`
         })
     }
 }
